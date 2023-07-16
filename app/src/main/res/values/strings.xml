@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Flashcards</string>
+
+    <!-- CollectionFragment -->
+    <string name="flashcards_word_count">Words: %1$d/%2$d</string>
+    <string name="add_new_collection">Add new collection</string>
+    <string name="add_collection">Add collection</string>
+
+    <!-- AddCollectionFragment -->
+    <string name="collection_name">Collection name</string>
+    <string name="collection_description">Collection description (optional)</string>
+
+</resources>
