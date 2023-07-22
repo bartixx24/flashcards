@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">Flashcards</string>
+
+    <!-- CollectionFragment -->
+    <string name="flashcards_word_count">Learned: %1$d/%2$d</string>
+    <string name="add_new_set">Add new set</string>
+    <string name="add_set">Add set</string>
+    <string name="three_dots">&#8942;</string>
+    <string name="set_name">Set name</string>
+    <string name="set_description">Set description (optional)</string>
+    <string name="flashcards_button_text">Flashcards</string>
+    <string name="learn_button_text">Learn</string>
+    <!-- Learn Dialog -->
+    <string name="choose_learning_strategy">Please choose flashcards learning strategy</string>
+    <string name="flashcards_order">Flashcards order</string>
+    <string name="show_learned">Show learned flashcards</string>
+    <string-array name="learn_options">
+        <item>Default (your order)</item>
+        <item>Default reversed</item>
+        <item>Ascending alphabetical</item>
+        <item>Descending alphabetical</item>
+        <item>Shuffle</item>
+    </string-array>
+
+    <!-- FlashcardsFragment -->
+    <string name="add_flashcard">Add flashcard</string>
+    <string name="add_new_flashcard">Add new flashcard</string>
+
+    <!-- AddFlashcardFragment -->
+    <string name="term">Term</string>
+    <string name="definition">Definition</string>
+    <string name="learned">Learned</string>
+    <string name="cancel">Cancel</string>
+    <string name="change_flashcard">Change</string>
+
+    <!-- Item Menu -->
+    <string name="edit_string">Edit</string>
+    <string name="delete_string">Delete</string>
+
+    <!-- Learn Fragment -->
+    <string name="show_definition">Show definition</string>
+    <string name="no_flashcards">No flashcards to display</string>
+    <string name="yes_description">Easy</string>
+    <string name="medium_description">So-so</string>
+    <string name="no_description">Difficult</string>
+    <string name="displaying_all">Displaying all flashcards</string>
+    <string name="displaying_unlearned">Displaying unlearned flashcards</string>
+
+</resources>
