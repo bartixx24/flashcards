@@ -20,7 +20,7 @@ import com.example.flashcards.viewmodel.FlashcardsViewModelFactory
 
 private const val TAG = "FlashcardsFragment"
 
-enum class FlashcardsOptions { EDIT, DELETE }
+enum class FlashcardsOptions { CHANGE_LEARNT, EDIT, DELETE }
 
 class FlashcardsFragment : Fragment() {
 
@@ -45,10 +45,15 @@ class FlashcardsFragment : Fragment() {
         }
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
-        binding.recyclerView.addItemDecoration(DividerItemDecoration(binding.recyclerView.context, DividerItemDecoration.VERTICAL))
+
+        val itemDecoration = DividerItemDecoration(binding.recyclerView.context, DividerItemDecoration.VERTICAL)
+        binding.recyclerView.addItemDecoration(itemDecoration)
 
         val adapter = FlashcardsAdapter(requireContext()) { option, flashcard ->
             when(option) {
+                FlashcardsOptions.CHANGE_LEARNT -> {
+                    changeLearned(flashcard)
+                }
                 FlashcardsOptions.EDIT -> {
                     editFlashcard(flashcard)
                 }
@@ -66,9 +71,16 @@ class FlashcardsFragment : Fragment() {
             flashcards.let {
                 adapter.submitList(null)
                 adapter.submitList(it)
+                // prevent adapter from stumbling / stuttering
+                adapter.notifyDataSetChanged()
             }
         }
 
+    }
+
+    private fun changeLearned(flashcard: Word) {
+        viewModel.setEditFlashcard(flashcard)
+        viewModel.updateFlashcard(flashcard.term, flashcard.definition, !flashcard.learned)
     }
 
     private fun editFlashcard(flashcard: Word) {
@@ -91,6 +103,7 @@ class FlashcardsFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         viewModel.resetCurrentSet()
+        Log.d(TAG, "onDestroy()")
         _binding = null
     }
 

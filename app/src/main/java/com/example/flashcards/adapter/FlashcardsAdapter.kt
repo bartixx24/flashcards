@@ -26,6 +26,7 @@ class FlashcardsAdapter(private val context: Context, private val functions: (Fl
                 binding.learnedIcon.setImageResource(R.drawable.unlearned_icon)
             }
 
+            binding.learnedIcon.setOnClickListener { functions(FlashcardsOptions.CHANGE_LEARNT, word) }
             binding.optionsMenu.setOnClickListener { displayPopupMenu(ctx, it, functions, word) }
         }
 

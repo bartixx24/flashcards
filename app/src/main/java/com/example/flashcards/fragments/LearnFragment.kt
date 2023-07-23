@@ -32,50 +32,71 @@ class LearnFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.learnFragment = this
-        binding.sharedViewModel = viewModel
+        viewModel.resetFirstLearnFlashcardsInitialization()
 
-        if(viewModel.learnWithLearned.value!!) binding.displaying.text = getString(R.string.displaying_all)
+        binding.learnFragment = this
+
+        // display the message according to the user learning method
+        if(viewModel.allFlashcards.value!!) binding.displaying.text = getString(R.string.displaying_all)
         else binding.displaying.text = getString(R.string.displaying_unlearned)
 
-        if(viewModel.flashcardsToLearnNum.value == 0) displayNoFlashcards()
-        else {
-
-            viewModel.getFlashcards().observe(viewLifecycleOwner) {flashcards ->
-                if(flashcards.size == viewModel.currentSet.value!!.wordsCount) {
-                    viewModel.setAndSortLearnFlashcards(flashcards, resources.getStringArray(R.array.learn_options).map { it.toString() } )
-                }
-            }
-
-            viewModel.learnFlashcards.observe(viewLifecycleOwner) {
-                getNext("first")
-            }
-
-        }
-
+        // inform the user how much flashcards of the set is learnt
         viewModel.currentSet.observe(viewLifecycleOwner) {
             binding.learnedFlashcards.text = resources.getString(R.string.flashcards_word_count, viewModel.currentSet.value!!.learnedCount, viewModel.currentSet.value!!.wordsCount)
             Log.d(TAG, "Current set: ${viewModel.currentSet.value}")
         }
 
+        // set icon and set term and definition
+        viewModel.currentLearnFlashcard.observe(viewLifecycleOwner) {currentFlashcard ->
+            binding.term.text = currentFlashcard.term
+            binding.definition.text = currentFlashcard.definition
+            if(!viewModel.allFlashcards.value!!) binding.currentLearnedIcon.setImageResource(R.drawable.happy_icon)
+            else {
+                if(currentFlashcard.learned) binding.currentLearnedIcon.setImageResource(R.drawable.learned_icon)
+                else binding.currentLearnedIcon.setImageResource(R.drawable.unlearned_icon)
+            }
+        }
+
+        //set learn flashcards
+        viewModel.getFlashcards().observe(viewLifecycleOwner) {flashcards ->
+            if(flashcards.size == viewModel.currentSet.value!!.wordsCount) {
+                viewModel.setLearnFlashcards(flashcards)
+            }
+        }
+
+        // get first flashcard
+        viewModel.learnFlashcards.observe(viewLifecycleOwner) {
+            Log.d(TAG, "learn flashcards changed: $it")
+            if(viewModel.learnFlashcards.value == null) displayNoFlashcards()
+            else if(viewModel.learnFlashcards.value!!.isEmpty()) displayNoFlashcards()
+            else {
+                viewModel.getNextToLearn()
+                displayWithoutDefinition()
+            }
+
+        }
+
+
+
     }
 
     fun getNext(decision: String) {
 
+        // update database accordingly
         if(decision == "yes") { viewModel.changeLearnedValueInRoom(true) }
-        else if(decision == "no" || decision == "medium") { viewModel.changeLearnedValueInRoom(false) }
+        else viewModel.changeLearnedValueInRoom(false)
 
-        Log.d(TAG, "Calling getNextToLearn in FlashcardsViewModel")
-        if(viewModel.getNextToLearn(decision)) {
-            binding.term.text = viewModel.currentLearnFlashcard.value!!.term
-            binding.definition.text = viewModel.currentLearnFlashcard.value!!.definition
-            if(viewModel.currentLearnFlashcard.value!!.learned) binding.currentLearnedIcon.setImageResource(R.drawable.learned_icon)
-            else binding.currentLearnedIcon.setImageResource(R.drawable.unlearned_icon)
-            displayWithoutDefinition()
-        } else {
-            displayNoFlashcards()
+        Log.d(TAG, "Display without definition")
+        if(!viewModel.learnFlashcards.value!!.isEmpty()) displayWithoutDefinition()
+
+    }
+
+    fun setLearnedIcon(): Int {
+        if(viewModel.allFlashcards.value!!) {
+            if(viewModel.currentLearnFlashcard.value!!.learned) return R.drawable.learned_icon
+            else return R.drawable.unlearned_icon
         }
-
+        return R.drawable.happy_icon
     }
 
     fun displayWithDefinition() {
@@ -91,7 +112,7 @@ class LearnFragment : Fragment() {
             learnedFlashcards.visibility = View.VISIBLE
             displaying.visibility = View.VISIBLE
         }
-        if(viewModel.learnWithLearned.value!!) binding.currentLearnedIcon.visibility = View.VISIBLE
+        if(viewModel.allFlashcards.value!!) binding.currentLearnedIcon.visibility = View.VISIBLE
         else binding.currentLearnedIcon.visibility = View.GONE
     }
 
@@ -108,7 +129,7 @@ class LearnFragment : Fragment() {
             learnedFlashcards.visibility = View.VISIBLE
             displaying.visibility = View.VISIBLE
         }
-        if(viewModel.learnWithLearned.value!!) binding.currentLearnedIcon.visibility = View.VISIBLE
+        if(viewModel.allFlashcards.value!!) binding.currentLearnedIcon.visibility = View.VISIBLE
         else binding.currentLearnedIcon.visibility = View.GONE
     }
 
@@ -129,6 +150,8 @@ class LearnFragment : Fragment() {
     }
 
     override fun onDestroy() {
+        viewModel.resetFirstLearnFlashcardsInitialization()
+        viewModel.resetLearnFlashcards()
         _binding = null
         super.onDestroy()
     }

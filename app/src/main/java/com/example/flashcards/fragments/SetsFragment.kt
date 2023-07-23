@@ -49,7 +49,9 @@ class SetsFragment : Fragment() {
         binding.addSetButton.setOnClickListener {addSet() }
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
-        binding.recyclerView.addItemDecoration(DividerItemDecoration(binding.recyclerView.context, DividerItemDecoration.VERTICAL))
+
+        val itemDecoration = DividerItemDecoration(binding.recyclerView.context, DividerItemDecoration.VERTICAL)
+        binding.recyclerView.addItemDecoration(itemDecoration)
 
         val adapter = CollectionAdapter(requireContext()) { flashcardsSet, option ->
 
@@ -69,6 +71,8 @@ class SetsFragment : Fragment() {
             flashcardsSets.let {
                 adapter.submitList(null)
                 adapter.submitList(it)
+                // prevent adapter from stumbling / stuttering
+                adapter.notifyDataSetChanged()
             }
         }
 
@@ -111,7 +115,7 @@ class SetsFragment : Fragment() {
         positiveButton.setOnClickListener {
             if(autoCompleteTextView.text.toString().isNotEmpty()) {
 
-                viewModel.setLearnWithLearned(showLearnedSwitch.isChecked)
+                viewModel.setAllFlashcards(showLearnedSwitch.isChecked)
 
                 inputLayout.isErrorEnabled = false
                 when(autoCompleteTextView.text.toString()) {

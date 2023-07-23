@@ -3,9 +3,6 @@
 
     <data>
         <variable
-            name="sharedViewModel"
-            type="com.example.flashcards.viewmodel.FlashcardsViewModel" />
-        <variable
             name="learnFragment"
             type="com.example.flashcards.fragments.LearnFragment" />
     </data>
@@ -16,13 +13,14 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="12dp"
         tools:context=".fragments.LearnFragment">
 
         <TextView
             android:id="@+id/learned_flashcards"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_margin="12dp"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -43,8 +41,7 @@
             android:id="@+id/current_learned_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            tools:srcCompat="@drawable/learned_icon"
+            android:layout_marginEnd="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/learned_flashcards"
             app:layout_constraintBottom_toBottomOf="@id/displaying"/>

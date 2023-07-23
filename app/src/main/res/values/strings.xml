@@ -32,6 +32,7 @@
     <string name="learned">Learned</string>
     <string name="cancel">Cancel</string>
     <string name="change_flashcard">Change</string>
+    <string name="add">Add</string>
 
     <!-- Item Menu -->
     <string name="edit_string">Edit</string>

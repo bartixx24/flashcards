@@ -23,6 +23,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/term_edit_text"
+            android:maxLength="72"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -42,7 +43,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/definition_edit_text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:maxLength="184"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -76,7 +78,7 @@
         android:id="@+id/add_flashcard_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/add_flashcard"
+        android:text="@string/add"
         android:layout_marginHorizontal="8dp"
         android:padding="12dp"
         app:cornerRadius="8dp"

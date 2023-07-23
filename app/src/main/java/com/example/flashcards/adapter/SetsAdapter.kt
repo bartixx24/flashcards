@@ -20,8 +20,8 @@ class CollectionAdapter(private val context: Context, private val functions: (Fl
     class SetViewHolder(private val binding: SetItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(set: FlashcardsSet, context: Context, functions: (FlashcardsSet, SetsOptions) -> Unit) {
             binding.collectionName.text = set.name
-            if(set.description == "") binding.collectionDescription.visibility = View.GONE
             binding.collectionDescription.text = set.description
+            if(set.description == "") binding.collectionDescription.visibility = View.GONE
             binding.numberOfWords.text =
                 context.getString(R.string.flashcards_word_count, set.learnedCount, set.wordsCount)
 

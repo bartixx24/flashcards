@@ -36,59 +36,93 @@ class FlashcardsViewModel(private val flashcardsDao: FlashcardsDao): ViewModel()
     }
 
     /** Larning logic */
+    // flashcards to learn from
+    private val _learnFlashcards = MutableLiveData<List<Word>?>()
+    val learnFlashcards: LiveData<List<Word>?> get() = _learnFlashcards
+    fun resetLearnFlashcards() { _learnFlashcards.value = null }
+
+    private val _nextLearnFlashcards = MutableLiveData<MutableList<Word>>(mutableListOf())
+
+    // track whether it is first initialization of learn flashcards
+    private val _firstLearnFlashcardsInitialization = MutableLiveData<Boolean>()
+    fun resetFirstLearnFlashcardsInitialization() { _firstLearnFlashcardsInitialization.value = true }
+
+    // flashcards to learn from
     private val _learnOption = MutableLiveData<String>()
     fun setLearnOption(option: String) { _learnOption.value = option }
 
-    private val _learnWithLearned = MutableLiveData<Boolean>()
-    val learnWithLearned: LiveData<Boolean> get() = _learnWithLearned
-    private val _flashcardsToLearnNum = MutableLiveData<Int>()
-    val flashcardsToLearnNum: LiveData<Int> get() = _flashcardsToLearnNum
-    fun setLearnWithLearned(learned: Boolean) {
-        _learnWithLearned.value = learned
-        if(learned) _flashcardsToLearnNum.value = currentSet.value!!.wordsCount
-        else _flashcardsToLearnNum.value = currentSet.value!!.wordsCount - currentSet.value!!.learnedCount
-    }
+    // whether all flashcards should be revised
+    private val _allFlashcards = MutableLiveData<Boolean>()
+    val allFlashcards: LiveData<Boolean> get() = _allFlashcards
 
-    private val _learnFlashcards = MutableLiveData<List<Word>>()
-    val learnFlashcards: LiveData<List<Word>> get() = _learnFlashcards
-    fun setAndSortLearnFlashcards(flashcards: List<Word>, options: List<String>) {
-        var newLearnList = flashcards
-        if(!_learnWithLearned.value!!) newLearnList = newLearnList.filter { !it.learned }
-        when(_learnOption.value) {
-            // default
-            options[0].toString() -> {  }
-            // default reversed
-            options[1].toString() -> { newLearnList = newLearnList.reversed() }
-            // ascending alphabetical
-            options[2].toString() -> { newLearnList = newLearnList.sortedBy { it.term } }
-            // descending alphabetical
-            options[4].toString() -> { newLearnList = newLearnList.sortedBy { it.term }.reversed() }
-            // shuffle
-            options[5].toString() -> { newLearnList = newLearnList.shuffled() }
-        }
-        _learnFlashcards.value = newLearnList
-        Log.d(TAG, "New learn flashcards: ${learnFlashcards.value}")
-    }
+    // index of the current flashcard
+    private val _currentLearnIndex = MutableLiveData<Int>()
+    private val currentLearnIndex: LiveData<Int> get() = _currentLearnIndex
 
+    // current flashcard to learn
     private val _currentLearnFlashcard = MutableLiveData<Word>()
     val currentLearnFlashcard: LiveData<Word> get() = _currentLearnFlashcard
 
-    private val _currentLearnIndex = MutableLiveData<Int>()
-    val currentLearnIndex: LiveData<Int> get() = _currentLearnIndex
+    fun setAllFlashcards(all: Boolean) { _allFlashcards.value = all }
 
-    fun getNextToLearn(decision: String): Boolean {
-        if(currentLearnIndex.value == null) _currentLearnIndex.value = 0
-        if(decision != "first" && (decision != "yes" || learnWithLearned.value!!)) _currentLearnIndex.value = currentLearnIndex.value!! + 1
-        if(currentLearnIndex.value == flashcardsToLearnNum.value!!) _currentLearnIndex.value = 0
-        if(decision == "yes") _flashcardsToLearnNum.value = flashcardsToLearnNum.value!! - 1
-        if(learnFlashcards.value!!.isNotEmpty()) _currentLearnFlashcard.value = learnFlashcards.value!![currentLearnIndex.value!!]
-        else return false
-        Log.d(TAG, "Next learnFlashcard: ${currentLearnFlashcard.value}")
-        return true
+    fun setLearnFlashcards(flashcards: List<Word>) {
+        if(_firstLearnFlashcardsInitialization.value!! && currentSet.value!!.wordsCount == flashcards.size) {
+            var newLearnFlashcards = flashcards
+            // filter flashcards for unlearned ones if the option is specified
+            if(!allFlashcards.value!!) newLearnFlashcards = newLearnFlashcards.filter { !it.learned }
+            // sort flashcards accordingly
+            Log.d(TAG, "Learn option: ${_learnOption.value}")
+            when(_learnOption.value) {
+                "Default (your order)" -> {  }
+                "Default reversed" -> { newLearnFlashcards = newLearnFlashcards.reversed() }
+                "Ascending alphabetical" -> { newLearnFlashcards = newLearnFlashcards.sortedBy { it.term } }
+                "Descending alphabetical" -> { newLearnFlashcards = newLearnFlashcards.sortedBy { it.term }.reversed() }
+                "Shuffle" -> { newLearnFlashcards = newLearnFlashcards.shuffled() }
+            }
+            Log.d(TAG, "Shuffled: $newLearnFlashcards")
+            // set current index to 0
+            _currentLearnIndex.value = -1
+            // set learn flashcards
+            _learnFlashcards.value = newLearnFlashcards
+            // inform that learn flashcards have been initialized
+            _firstLearnFlashcardsInitialization.value = false
+
+        }
     }
 
+    fun getNextToLearn() {
+
+        Log.d(TAG, "Current learn flashcards: ${learnFlashcards.value}")
+        Log.d(TAG, "Current learn index: ${currentLearnIndex.value}")
+
+        _currentLearnIndex.value = currentLearnIndex.value!! + 1
+
+        if(currentLearnIndex.value == learnFlashcards.value!!.size) {
+            Log.d(TAG, "Resetting learn flashcards")
+            _currentLearnIndex.value = -1
+            Log.d(TAG, "Setting new learn flashcards: ${_nextLearnFlashcards.value}")
+            if(_learnOption.value == "Shuffle") _nextLearnFlashcards.value!!.shuffle()
+            _learnFlashcards.value = _nextLearnFlashcards.value!!
+            _nextLearnFlashcards.value = mutableListOf()
+        } else {
+            _currentLearnFlashcard.value = learnFlashcards.value!![currentLearnIndex.value!!]
+        }
+
+    }
+
+    // update room when one of the learn level buttons is clicked
     fun changeLearnedValueInRoom(learned: Boolean) {
+
         val flashcardToUpdate = currentLearnFlashcard.value!!
+
+        // if we have unlearned flashcard option and the used didn't learn the current flashcard,
+        // add it to the next learn flashcards list
+        if(!allFlashcards.value!!) { if(!learned) _nextLearnFlashcards.value!!.add(flashcardToUpdate) }
+        // if we have all flashcard option, add the current flashcard to the next learn flashcards list
+        else _nextLearnFlashcards.value!!.add(flashcardToUpdate)
+
+        getNextToLearn()
+
         viewModelScope.launch {
 
             if (learned && !flashcardToUpdate.learned) {
