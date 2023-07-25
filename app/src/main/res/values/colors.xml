@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+        http://mcg.mbitson.com/#!?mcgpalette0=%2314a3ab
+        https://coolors.co/861388-e15a97-eeabc4-c799a6-4b2840
+    -->
+
+    <color name="primary_light">#80B7DC</color>
+    <color name="primary">#016FB9</color>
+    <color name="primary_dark">#0152A2</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="on_primary_dark">#000000</color>
+
+    <color name="secondary_light">#EFBC6B</color>
+    <color name="secondary">#E89F2C</color>
+    <color name="secondary_dark">#E28D21</color>
+    <color name="on_secondary">#FFFFFF</color>
+    <color name="on_secondary_dark">#000000</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="error_color">#9E3232</color>
+
+    <color name="background_color_light_mode_1">#FFFFFF</color>
+    <color name="background_color_light_mode_2">#E7E7E7</color>
+    <color name="background_divider_light_mode">#777777</color>
+
+    <color name="background_color_dark_mode_1">#212121</color>
+    <color name="background_color_dark_mode_2">#171717</color>
+    <color name="background_divider_dark_mode">#AAAAAA</color>
+
+    <!-- Learn Buttons -->
+    <color name="yes_color">#4C9C6E</color>
+    <color name="medium_color">#D5A521</color>
+    <color name="no_color">#B13636</color>
+
+</resources>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.SetsFragment">
+
+    <View
+        android:id="@+id/sort_view_background"
+        android:layout_width="0dp"
+        android:layout_height="84dp"
+        android:background="?attr/backgroundHelpColor"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <View
+        android:id="@+id/sort_divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="?attr/dividerColor"
+        app:layout_constraintTop_toBottomOf="@id/sort_view_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/sort_option_input_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/sort_view_background"
+        app:layout_constraintBottom_toBottomOf="@id/sort_view_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/Widget.Flashcards.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+        <AutoCompleteTextView
+            android:id="@+id/sort_auto_complete_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/backgroundColor"
+            android:inputType="none"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sort_divider"
+        app:layout_constraintBottom_toTopOf="@id/buttons_background"
+        tools:listitem="@layout/set_item"/>
+
+    <View
+        android:id="@+id/buttons_background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/recyclerview_button_background_height"
+        android:background="?attr/backgroundHelpColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <View
+        android:id="@+id/buttons_background_divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="?attr/dividerColor"
+        app:layout_constraintBottom_toTopOf="@id/buttons_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/add_set_button"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/recyclerview_button_height"
+        android:text="@string/add_set"
+        android:textColor="?attr/colorOnSecondary"
+        app:icon="@drawable/add_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/buttons_background"
+        app:layout_constraintTop_toTopOf="@id/buttons_background"
+        android:contentDescription="@string/add_new_set" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

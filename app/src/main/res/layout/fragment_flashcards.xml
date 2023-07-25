@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.slidingpanelayout.widget.SlidingPaneLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.FlashcardsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="550dp"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/buttons_background"
+            tools:listitem="@layout/flashcard_item"/>
+
+        <View
+            android:id="@+id/buttons_background"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/recyclerview_button_background_height"
+            android:background="?attr/backgroundHelpColor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <View
+            android:id="@+id/buttons_background_divider"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="?attr/dividerColor"
+            app:layout_constraintBottom_toTopOf="@id/buttons_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/add_flashcard_button"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="@string/add_flashcard"
+            android:textColor="?attr/colorOnSecondary"
+            app:icon="@drawable/add_icon"
+            app:layout_constraintStart_toEndOf="@id/learn_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/buttons_background"
+            app:layout_constraintBottom_toBottomOf="@id/buttons_background"
+            android:contentDescription="@string/add_new_flashcard"/>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/learn_button"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="@string/learn_button_text"
+            android:textColor="?attr/colorOnSecondary"
+            app:icon="@drawable/add_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/add_flashcard_button"
+            app:layout_constraintTop_toTopOf="@id/buttons_background"
+            app:layout_constraintBottom_toBottomOf="@id/buttons_background"
+            android:contentDescription="@string/add_new_flashcard"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/add_flashcard_container_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
+
+</androidx.slidingpanelayout.widget.SlidingPaneLayout>
