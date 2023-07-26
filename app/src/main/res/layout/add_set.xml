@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:gravity="center"
+            android:background="?attr/colorPrimary"
+            android:textColor="?attr/colorOnPrimary"
+            android:text="@string/add_set"
+            style="@style/TextAppearance.MaterialComponents.Headline5"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/add_set_name_input_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/set_name"
+            style="@style/Widget.Flashcards.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/add_set_name_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="48"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/add_set_description_input_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/set_description"
+            style="@style/Widget.Flashcards.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/add_set_description_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="128"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
