@@ -1,0 +1,33 @@
+<resources
+    xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Flashcards" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+
+        <!-- Primary app color -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+
+        <!-- Secondary app color. -->
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorSecondaryVariant">@color/secondary_dark</item>
+        <item name="colorOnSecondary">@color/on_secondary</item>
+
+        <item name="backgroundColor">@color/light_background_color</item>
+        <item name="sortBackgroundColor">@color/sort_light_color</item>
+        <item name="bottomButtonsBackgroundColor">@color/bottom_buttons_light_color</item>
+        <item name="sortSpinnerColor">@color/white</item>
+
+        <!-- the bottom nav with three buttons -->
+        <item name="android:navigationBarColor">@color/navigation_light_bar_color</item>
+
+        <item name="dividerColor">@color/background_divider_light_mode</item>
+        <item name="android:listDivider">@drawable/divider_customization</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+
+    </style>
+
+    <style name="Theme.Flashcards" parent="Base.Theme.Flashcards" />
+</resources>

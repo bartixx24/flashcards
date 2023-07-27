@@ -1,0 +1,28 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Flashcards" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary app color -->
+        <item name="colorPrimary">@color/primary_light</item>
+        <item name="colorPrimaryVariant">@color/primary</item>
+        <item name="colorOnPrimary">@color/on_primary_dark</item>
+        <!-- Secondary app color. -->
+        <item name="colorSecondary">@color/secondary_light</item>
+        <item name="colorSecondaryVariant">@color/secondary</item>
+        <item name="colorOnSecondary">@color/on_secondary_dark</item>
+
+        <item name="backgroundColor">@color/dark_background_color</item>
+        <item name="sortBackgroundColor">@color/sort_dark_color</item>
+        <item name="bottomButtonsBackgroundColor">@color/bottom_buttons_dark_color</item>
+        <item name="sortSpinnerColor">@color/sort_spinner_dark_color</item>
+
+        <item name="dividerColor">@color/background_divider_dark_mode</item>
+        <item name="android:listDivider">@drawable/divider_customization</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" >@color/black</item>
+
+    </style>
+
+    <style name="Theme.Flashcards" parent="Base.Theme.Flashcards" />
+
+</resources>
