@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action"
+        android:title="@string/options"
+        android:icon="@drawable/options_icon"
+        app:showAsAction="ifRoom">
+
+        <menu>
+
+            <item
+                android:id="@+id/track_progress_item"
+                android:title="@string/track_progress"
+                android:icon="@drawable/track_progress_icon" />
+
+            <item
+                android:id="@+id/contact_item"
+                android:title="@string/contact"
+                android:icon="@drawable/contact_icon"/>
+
+            <item
+                android:id="@+id/about_us_item"
+                android:title="@string/about_us"
+                android:icon="@drawable/about_us_icon"/>
+
+            <item
+                android:id="@+id/exit_item"
+                android:title="@string/exit"
+                android:icon="@drawable/exit_icon" />
+
+        </menu>
+
+    </item>
+
+</menu>
