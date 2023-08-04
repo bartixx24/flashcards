@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -20,6 +21,7 @@ class AddFlashcardFragment : Fragment() {
     companion object {
         const val ADD_FLASHCARD = "add flashcard"
         const val EDIT_FLASHCARD = "edit flashcard"
+        const val ADD_FLASHCARD_KEY = "add_edit"
     }
 
     private var _binding: FragmentAddFlashcardBinding? = null
@@ -36,7 +38,7 @@ class AddFlashcardFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
-            addEditOption = it.getString("add_edit")!!
+            addEditOption = it.getString(ADD_FLASHCARD_KEY)!!
         }
 
     }
@@ -49,11 +51,14 @@ class AddFlashcardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // adjust layout with keyboard
+        //activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+
         binding.addFlashcardButton.setOnClickListener { addFlashcard() }
         binding.cancelButton.setOnClickListener { findNavController().navigateUp() }
 
         if(addEditOption == EDIT_FLASHCARD) {
-            binding.addFlashcardButton.text = getString(R.string.change_flashcard)
+            binding.addFlashcardButton.text = getString(R.string.modify)
             val flashcard = viewModel.getEditFlashcard()
             binding.termEditText.setText(flashcard.term)
             binding.definitionEditText.setText(flashcard.definition)
@@ -81,6 +86,8 @@ class AddFlashcardFragment : Fragment() {
         val name = binding.termEditText.text.toString()
         val description = binding.definitionEditText.text.toString()
         val learned = binding.learned.isChecked
+
+        this.view?.hideKeyboard()
 
         if(addEditOption == ADD_FLASHCARD) {
             val success = viewModel.createFlashcard(name, description, learned)

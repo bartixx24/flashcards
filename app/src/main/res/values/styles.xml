@@ -64,6 +64,7 @@
 
     <style parent="TextAppearance.MaterialComponents.Headline6" name="StatisticsCardNumber">
         <item name="android:textSize">32sp</item>
+        <item name="android:layout_marginTop">4dp</item>
     </style>
 
 </resources>

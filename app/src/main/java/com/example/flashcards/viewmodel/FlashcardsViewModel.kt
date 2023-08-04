@@ -80,6 +80,22 @@ class FlashcardsViewModel(private val flashcardsDao: FlashcardsDao, application:
         }
     }
 
+    /** editing set */
+    private val _editSet = MutableLiveData<FlashcardsSet>()
+    val editSet: LiveData<FlashcardsSet> get() = _editSet
+    fun setEditSet(setToEdit: FlashcardsSet) { _editSet.value = setToEdit }
+    fun getEditSet(): FlashcardsSet? {
+        return if(editSet.value != null) editSet.value!!
+        else null
+    }
+
+    fun updateFlashcardsSet(setName: String, setDescription: String) {
+        val updateSet = editSet.value!!
+        updateSet.name = setName
+        updateSet.description = setDescription
+        _editSet.value = updateSet
+        updateFlashcardSet(editSet.value!!)
+    }
 
     /** Learning logic */
     // flashcards to learn from
@@ -308,10 +324,19 @@ class FlashcardsViewModel(private val flashcardsDao: FlashcardsDao, application:
     }
 
     fun updateFlashcardSet(flashcardsSet: FlashcardsSet) {
-        viewModelScope.launch {
-            Log.d(TAG, "Updating flashcards set: $flashcardsSet")
-            flashcardsDao.updateFlashcardsSet(flashcardsSet)
-        }
+
+        val updateSetInputData = Data.Builder()
+            .putInt(SET_ID, flashcardsSet.id)
+            .putString(SET_NAME, flashcardsSet.name)
+            .putString(SET_DESCRIPTION, flashcardsSet.description)
+            .putInt(SET_WORDS_COUNT, flashcardsSet.wordsCount)
+            .putInt(SET_LEARNED_COUNT, flashcardsSet.learnedCount)
+            .build()
+
+        val updateSetRequest = OneTimeWorkRequestBuilder<UpdateSetWorker>()
+            .setInputData(updateSetInputData).build()
+
+        workManager.enqueue(updateSetRequest)
     }
 
     fun deleteFlashcard(flashcard: Word, deletingSet: Boolean) {
@@ -389,6 +414,15 @@ class FlashcardsViewModel(private val flashcardsDao: FlashcardsDao, application:
         return true
 
     }
+
+    /** TrackProgressFragment */
+
+    fun getAllFlashcardsNum(): LiveData<Int> { return flashcardsDao.getAllFlashcardsNum().asLiveData() }
+    fun getLearnedFlashcardsNum(): LiveData<Int> { return flashcardsDao.getLearnedFlashcardsNum().asLiveData() }
+    fun getUnlearnedFlashcardsNum(): LiveData<Int> { return flashcardsDao.getUnlearnedFlashcardsNum().asLiveData() }
+
+    fun getUnlearnedSetsNum(): LiveData<Int> { return flashcardsDao.getUnlearnedSetsNum().asLiveData() }
+    fun getLearnedSetsNum(): LiveData<Int> { return flashcardsDao.getLearnedSetsNum().asLiveData() }
 
 }
 

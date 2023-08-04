@@ -1,5 +1,6 @@
 package com.example.flashcards.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.SpannableStringBuilder
@@ -7,11 +8,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
-import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -59,7 +59,10 @@ class SetsFragment : Fragment() {
 
         viewModel.resetCurrentSet()
 
-        binding.addSetButton.setOnClickListener {addSet() }
+        binding.addSetButton.setOnClickListener {
+            val action = SetsFragmentDirections.actionSetsFragmentToAddSetFragment(AddSetFragment.ADD_SET)
+            findNavController().navigate(action)
+        }
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
 
@@ -207,46 +210,6 @@ class SetsFragment : Fragment() {
         alertDialog.create().show()
     }
 
-    private fun addSet() {
-
-        val addView = LayoutInflater.from(requireContext()).inflate(R.layout.add_set, null)
-
-        val nameInputLayout = addView.findViewById<TextInputLayout>(R.id.add_set_name_input_text)
-        val nameText = addView.findViewById<EditText>(R.id.add_set_name_edit_text)
-        val descriptionText = addView.findViewById<EditText>(R.id.add_set_description_edit_text)
-
-        val addDialog = AlertDialog.Builder(requireContext())
-            .setView(addView)
-            .setPositiveButton("Ok", null)
-            .setNegativeButton("Cancel") { _, _ -> }
-            .create()
-
-        addDialog.show()
-
-        val positiveButton = addDialog.getButton(AlertDialog.BUTTON_POSITIVE)
-        positiveButton.setOnClickListener {
-
-            if(!nameText.text.toString().isNullOrEmpty()) {
-
-                nameInputLayout.isErrorEnabled = false
-
-                val setName = nameText.text.toString().capitalized()
-                var setDescription = ""
-                if(!descriptionText.text.toString().isNullOrEmpty()) {
-                    setDescription = descriptionText.text.toString()
-                }
-
-                viewModel.addFlashcardsSet(setName, setDescription)
-                addDialog.dismiss()
-            } else {
-                Log.e(TAG, "Cannot create a new set without a set name!")
-                nameInputLayout.error = "Please specify the set name"
-                nameInputLayout.isErrorEnabled = true
-            }
-        }
-
-    }
-
     private fun deleteSet(flashcardsSet: FlashcardsSet) {
         viewModel.deleteSet(flashcardsSet)
         viewModel.getFlashcardsToDelete(flashcardsSet.id).observe(viewLifecycleOwner) {flashcards ->
@@ -257,40 +220,10 @@ class SetsFragment : Fragment() {
     }
 
     private fun editSet(flashcardsSet: FlashcardsSet) {
-        val updateView = LayoutInflater.from(requireContext()).inflate(R.layout.add_set, null)
 
-        val nameText = updateView.findViewById<EditText>(R.id.add_set_name_edit_text)
-        val descriptionText = updateView.findViewById<EditText>(R.id.add_set_description_edit_text)
-
-        nameText.setText(flashcardsSet.name)
-        descriptionText.setText(flashcardsSet.description)
-
-        val updateDialog = AlertDialog.Builder(requireContext())
-            .setView(updateView)
-            .setPositiveButton("Ok") { dialog, _ ->
-
-                if(!nameText.text.toString().isNullOrEmpty()) {
-
-                    val setName = nameText.text.toString()
-                    var setDescription = ""
-                    if(!descriptionText.text.toString().isNullOrEmpty()) {
-                        setDescription = descriptionText.text.toString()
-                    }
-
-                    flashcardsSet.name = setName
-                    flashcardsSet.description = setDescription
-
-                    viewModel.updateFlashcardSet(flashcardsSet)
-
-                } else {
-                    Toast.makeText(requireContext(), "You need to pass a name of the set", Toast.LENGTH_SHORT).show()
-                    Log.e(TAG, "Cannot update the new set without a set name!")
-                }
-
-            }
-            .setNegativeButton("Cancel") { dialog, _ -> }
-
-        updateDialog.create().show()
+        viewModel.setEditSet(flashcardsSet)
+        val action = SetsFragmentDirections.actionSetsFragmentToAddSetFragment(AddSetFragment.EDIT_SET)
+        findNavController().navigate(action)
 
     }
 
@@ -301,9 +234,7 @@ class SetsFragment : Fragment() {
 
 }
 
-fun String.capitalized(): String {
-    return this.replaceFirstChar {
-        if(it.isLowerCase()) it.titlecase(Locale.getDefault())
-        else it.toString()
-    }
+fun View.hideKeyboard() {
+    val inputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    inputMethodManager.hideSoftInputFromWindow(windowToken, 0)
 }

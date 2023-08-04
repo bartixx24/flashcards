@@ -17,8 +17,6 @@
     <string name="add_new_set">Add new set</string>
     <string name="add_set">Add set</string>
     <string name="three_dots">&#8942;</string>
-    <string name="set_name">Set name</string>
-    <string name="set_description">Set description (optional)</string>
     <string name="flashcards_button_text">Flashcards</string>
     <string name="learn_button_text">Learn</string>
     <string-array name="sort_options">
@@ -43,8 +41,10 @@
     <string name="learned_flashcards_title">Learned flashcards</string>
     <string name="all_flashcards_title">All flashcards</string>
     <string name="to_learn_flashcards_title">Flashcards to learn</string>
-    <string name="all_sets_title">All sets</string>
+    <string name="unlearned_sets_title">Sets to learn</string>
     <string name="learned_sets_title">Learned sets</string>
+    <string name="no_statistic_data">---</string>
+    <string name="browse_sets">Browse sets</string>
 
     <!-- FlashcardsFragment -->
     <string name="add_flashcard">Add flashcard</string>
@@ -55,8 +55,12 @@
     <string name="definition">Definition</string>
     <string name="learned">Learned</string>
     <string name="cancel">Cancel</string>
-    <string name="change_flashcard">Change</string>
     <string name="add">Add</string>
+
+    <!-- AddSetFragment -->
+    <string name="set_name">Set name</string>
+    <string name="set_description">Set description (optional)</string>
+    <string name="modify">Modify</string>
 
     <!-- Item Menu -->
     <string name="edit_string">Edit</string>
