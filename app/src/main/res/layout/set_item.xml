@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/backgroundColor"
+        android:padding="@dimen/items_padding">
+
+        <TextView
+            android:id="@+id/collection_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/options_menu"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Collection Name"
+            style="@style/Widget.Flashcards.TextView.ItemName"/>
+
+        <TextView
+            android:id="@+id/collection_description"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/collection_name"
+            tools:text="Desciption"
+            style="@style/Widget.Flashcards.TextView.ItemDesciption"/>
+
+        <TextView
+            android:id="@+id/number_of_words"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toBottomOf="@id/collection_description"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Words: 4/7"
+            style="@style/Widget.Flashcards.TextView.ItemDesciption"/>
+
+        <TextView
+            android:id="@+id/options_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:text="@string/three_dots"
+            style="@style/Widget.Flashcards.TextView.ItemName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/flashcards_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginHorizontal="4dp"
+            android:text="@string/flashcards_button_text"
+            app:cornerRadius="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/learn_button"
+            app:layout_constraintTop_toBottomOf="@id/number_of_words"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/learn_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:text="@string/learn_button_text"
+            app:cornerRadius="8dp"
+            app:layout_constraintStart_toEndOf="@id/flashcards_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/flashcards_button"
+            app:layout_constraintBottom_toBottomOf="@id/flashcards_button"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
