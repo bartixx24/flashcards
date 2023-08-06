@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+        http://mcg.mbitson.com/#!?mcgpalette0=%2314a3ab
+        https://coolors.co/861388-e15a97-eeabc4-c799a6-4b2840
+    -->
+
+    <!--<color name="primary_light">#C3CCD5</color>-->
+    <color name="primary_light">#76A2CD</color>
+    <color name="primary">#183750</color>
+    <color name="primary_dark">#0E2337</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="on_primary_dark">#000000</color>
+
+<!--    <color name="secondary_light">#E9A862</color>-->
+<!--    <color name="secondary">#E0831F</color>-->
+<!--    <color name="secondary_dark">#D87017</color>-->
+    <color name="secondary_light">#EA9165</color>
+    <color name="secondary">#E67D4A</color>
+    <color name="secondary_dark">#DB6032 </color>
+    <color name="on_secondary">#FFFFFF</color>
+    <color name="on_secondary_dark">#000000</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="error_color">#9E3232</color>
+
+    <color name="light_background_color">#FFFFFF</color>
+    <color name="sort_light_color">#C3CCD5</color>
+    <color name="bottom_buttons_light_color">#C3CCD5</color>
+    <color name="navigation_light_bar_color">#84919E</color>
+    <color name="background_divider_light_mode">#666666</color>
+
+    <color name="dark_background_color">#242424</color>
+    <color name="sort_dark_color">#121212</color>
+    <color name="bottom_buttons_dark_color">#000000</color>
+    <color name="sort_spinner_dark_color">#292929</color>
+    <color name="background_divider_dark_mode">#AAAAAA</color>
+
+    <!-- Learn Buttons -->
+    <color name="yes_color">#43985F</color>
+    <color name="medium_color">#F6A734</color>
+    <color name="no_color">#C64545</color>
+
+    <color name="red_option">#C24545</color>
+
+</resources>

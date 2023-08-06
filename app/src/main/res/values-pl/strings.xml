@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App options menu -->
+    <string name="options">Opcje</string>
+    <string name="track_progress">Sprawdź swój postęp</string>
+    <string name="rate_us">Oceń nas</string>
+    <string name="contact">Kontakt</string>
+    <string name="email">aquilaflashcards@gmail.com</string>
+    <string name="about_us">O nas</string>
+    <string name="app_description">Nauka na pamięć nigdy nie była prostsza z aplikacją Aquila Flashcards! Baw się dobrze, zapamiętując trudne słowa już teraz!</string>
+    <string name="exit">Wyjście</string>
+
+    <!-- SetsFragment -->
+    <string name="flashcards_word_count">Zapamiętano: %1$d/%2$d</string>
+    <string name="add_new_set">Dodaj nowy zestaw</string>
+    <string name="add_set">Dodaj zestaw</string>
+    <string name="three_dots">&#8942;</string>
+    <string name="flashcards_button_text">Fiszki</string>
+    <string name="learn_button_text">Ucz się</string>
+    <string-array name="sort_options">
+        <item>Oryginalna kolejność</item>
+        <item>Odwrócona oryginalna kolejność</item>
+        <item>Rosnąco alfabetycznie</item>
+        <item>Malejąco alfabetycznie</item>
+    </string-array>
+    <!-- Learn Dialog -->
+    <string name="choose_learning_strategy">Wybierz strategię nauki</string>
+    <string name="flashcards_order">Kolejność fiszek</string>
+    <string name="show_learned">Pokaż zapamiętane fiszki</string>
+    <string-array name="learn_options">
+        <item>Oryginalna kolejność</item>
+        <item>Odwrócona oryginalna kolejność</item>
+        <item>Losowa kolejność</item>
+        <item>Rosnąco alfabetycznie</item>
+        <item>Malejąco alfabetycznie</item>
+    </string-array>
+
+    <!-- TrackProgressFragment -->
+    <string name="learned_flashcards_title">Zapamiętan fiszki</string>
+    <string name="all_flashcards_title">Wszystkie fiszki</string>
+    <string name="to_learn_flashcards_title">Niezapamiętane fiszki</string>
+    <string name="unlearned_sets_title">Niezapamiętane zestawy</string>
+    <string name="learned_sets_title">Zapamiętane zestawy</string>
+    <string name="no_statistic_data">---</string>
+    <string name="browse_sets">Przeglądaj zestawy</string>
+
+    <!-- FlashcardsFragment -->
+    <string name="add_flashcard">Dodaj fiszkę</string>
+    <string name="add_new_flashcard">Dodaj nową fiszkę</string>
+
+    <!-- AddFlashcardFragment -->
+    <string name="term">Pojęcie</string>
+    <string name="definition">Definicja</string>
+    <string name="learned">Zapamiętane</string>
+    <string name="cancel">Anuluj</string>
+    <string name="add">Dodaj</string>
+
+    <!-- AddSetFragment -->
+    <string name="set_name">Nazwa zestawu</string>
+    <string name="set_description">Opis zestawu (opcjonalne)</string>
+    <string name="modify">Modyfikuj</string>
+
+    <!-- Item Menu -->
+    <string name="edit_string">Edytuj</string>
+    <string name="delete_string">Usuń</string>
+
+    <!-- Learn Fragment -->
+    <string name="show_definition">Pokaż definicje</string>
+    <string name="no_flashcards">Brak fiszek do wyświetlenia</string>
+    <string name="yes_description">Łatwe</string>
+    <string name="medium_description">Średnie</string>
+    <string name="no_description">Trudne</string>
+    <string name="displaying_all">Wyświetlanie wszystkich fiszek</string>
+    <string name="displaying_unlearned">Wyświetlanie niezapamiętanych fiszek</string>
+</resources>

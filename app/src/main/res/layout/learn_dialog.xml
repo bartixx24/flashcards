@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/choose_order"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+
+        android:padding="12dp"
+        android:gravity="center"
+        android:background="?attr/colorPrimary"
+        android:textColor="?attr/colorOnPrimary"
+        android:text="@string/choose_learning_strategy"
+        style="@style/TextAppearance.MaterialComponents.Headline5"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/learn_options_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="12dp"
+        android:hint="@string/flashcards_order"
+        style="@style/Widget.Flashcards.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+        <AutoCompleteTextView
+            android:id="@+id/auto_complete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/show_learned"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginHorizontal="32dp"
+        android:text="@string/show_learned"
+        android:checked="false"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"/>
+
+</LinearLayout>
+
