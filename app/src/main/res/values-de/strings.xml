@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App -->
+    <string name="app_name">Aquila Flashcards</string>
+    <string name="unexpected_error">Es ist ein unerwarteter Fehler aufgetreten… :(</string>
+    <string name="empty_field">Dieses Feld darf nicht leer sein…</string>
+    <string name="back">Zurück</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="exit">Exit</string>
+
+    <!-- App options menu -->
+    <string name="options">Optionen</string>
+    <string name="track_progress">Fortschrittsverfolgung</string>
+    <string name="rate_us">Bewerten Sie uns</string>
+    <string name="contact">Problem melden</string>
+    <string name="email">aquilaflashcards@gmail.com</string>
+    <string name="about_us">Über uns</string>
+    <string name="app_description">Mit der Aquila Flashcards-App war es noch nie so einfach, auswendig zu lernen! Merken Sie sich knifflige Begriffe ganz einfach und haben Sie jetzt kostenlosen Spaß!</string>
+
+    <!-- SetsFragment -->
+    <string name="flashcards_word_count">Gelernt: %1$d/%2$d</string>
+    <string name="add_new_set">Neuen Satz erstellen</string>
+    <string name="add_set">Satz erstellen</string>
+    <string name="three_dots">&#8942;</string>
+    <string name="flashcards_button_text">Begriffe</string>
+    <string name="learn_button_text">Lernen</string>
+    <string-array name="sort_options">
+        <item>Eingabeordnung</item>
+        <item>umgekehrte Eingabeordnung</item>
+        <item>Alphabetisch aufsteigend</item>
+        <item>Alphabetisch absteigend</item>
+    </string-array>
+    <!-- Learn Dialog -->
+    <string name="choose_learning_strategy">Bitte wählen Sie eine Lernstrategie</string>
+    <string name="flashcards_order">Begriffsordnung</string>
+    <string name="show_learned">Gelernte Begriffe anzeigen</string>
+    <string name="ok">Ok</string>
+    <string-array name="learn_options">
+        <item>Eingabeordnung</item>
+        <item>umgekehrte Eingabeordnung</item>
+        <item>zufällige Ordnung</item>
+        <item>Alphabetisch aufsteigend</item>
+        <item>Alphabetisch absteigend</item>
+    </string-array>
+    <!-- Delete Dialog -->
+    <string name="delete_set_title">Satz löschen</string>
+    <string name="delete_set_message">Sind Sie sicher, dass Sie diesen Satz löschen möchten?</string>
+    <string name="delete_flashcard_title">Begriff löschen</string>
+    <string name="delete_flashcard_message">Sind Sie sicher, dass Sie diesen Begriff löschen möchten?</string>
+
+    <!-- TrackProgressFragment -->
+    <string name="learned_flashcards_title">Karteikarten gelernt</string>
+    <string name="all_flashcards_title">Alle Karteikarten</string>
+    <string name="to_learn_flashcards_title">Karteikarten zum Lernen</string>
+    <string name="unlearned_sets_title">Sätze zum lernen</string>
+    <string name="learned_sets_title">Sätze gelernt</string>
+    <string name="no_statistic_data">---</string>
+    <string name="browse_sets">Sätze durchsuchen</string>
+
+    <!-- FlashcardsFragment -->
+    <string name="add_flashcard">Begriffe hinzufügen</string>
+    <string name="add_new_flashcard">neue Begriffe hinzufügen</string>
+
+    <!-- AddFlashcardFragment -->
+    <string name="term">Begriffe</string>
+    <string name="definition">Definition</string>
+    <string name="learned">Gelernt</string>
+    <string name="add">Hinzufügen</string>
+    <string name="flashcard_added_toast">Ein neuer Begriff wurde hinzugefügt!</string>
+    <string name="flashcard_modified_toast">Der Begriff wurde geändert!</string>
+
+    <!-- AddSetFragment -->
+    <string name="set_name">Satzname</string>
+    <string name="set_description">Satzbeschreibung (optional)</string>
+    <string name="modify">Ändern</string>
+    <string name="create">Erstellen</string>
+    <string name="set_created_toast">Ein neuer Satz wurde erstellt!</string>
+    <string name="set_modified_toast">Der Satz wurde geändert!</string>
+
+    <!-- Item Menu -->
+    <string name="edit_string">Bearbeiten</string>
+    <string name="delete_string">Löschen</string>
+
+    <!-- Learn Fragment -->
+    <string name="show_definition">Definition anzeigen</string>
+    <string name="no_flashcards">Keine Karteikarten zum Anzeigen</string>
+    <string name="yes_description">Einfach</string>
+    <string name="medium_description">Soso</string>
+    <string name="no_description">Schwer</string>
+    <string name="displaying_all">Alle Karteikarten angezeigt</string>
+    <string name="displaying_unlearned">Ungelernte Karteikarten angezeigt</string>
+
+</resources>
