@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="learnFragment"
+            type="com.example.flashcards.fragments.LearnFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="12dp"
+        tools:context=".fragments.LearnFragment">
+
+        <TextView
+            android:id="@+id/learned_flashcards"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Learned: 15/27"
+            style="@style/TextAppearance.MaterialComponents.Headline5"/>
+
+        <TextView
+            android:id="@+id/displaying"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/learned_flashcards"
+            app:layout_constraintTop_toBottomOf="@id/learned_flashcards"
+            tools:text="Displaying all flashcards"
+            style="@style/TextAppearance.MaterialComponents.Headline5"/>
+
+        <ImageView
+            android:id="@+id/current_learned_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/learned_flashcards"
+            app:layout_constraintBottom_toBottomOf="@id/displaying"
+            tools:srcCompat="@drawable/yes_icon"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/term_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="288dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            style="@style/LearnCardView">
+
+            <TextView
+                android:id="@+id/term"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Term to learn"
+                style="@style/LearnCardText"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/definition_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            style="@style/LearnCardView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/term_card">
+
+            <TextView
+                android:id="@+id/definition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Definition: Siabadaba diabada siabadaba siabadaba siabadaba boilerplate text to check how many words can this funny card fit! boilerplate text to check how many words can this funny card fit! boilerplate text to check how many words can this funny card fit! boilerplate text to check how many words can this funny card fit!"
+                style="@style/LearnCardText"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/no_flashcards"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:layout_marginBottom="72dp"
+            android:text="@string/no_flashcards"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"/>
+
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/happy_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:srcCompat="@drawable/happy_icon"
+            app:layout_constraintStart_toStartOf="@id/no_flashcards"
+            app:layout_constraintEnd_toEndOf="@id/no_flashcards"
+            app:layout_constraintTop_toBottomOf="@id/no_flashcards" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/show_definition_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/learn_button_height"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/show_definition"
+            android:onClick="@{() -> learnFragment.displayWithDefinition()}"
+            app:cornerRadius="@dimen/round_corners_radius"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/yes_button"
+            android:layout_width="0dp"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="@color/yes_color"
+            android:contentDescription="@string/yes_description"
+            android:onClick='@{() -> learnFragment.getNext("yes")}'
+            app:icon="@drawable/yes_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/medium_button"
+            style="@style/Widget.Flashcards.Button.Learn"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/medium_button"
+            android:layout_width="0dp"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="@color/medium_color"
+            android:contentDescription="@string/medium_description"
+            android:onClick='@{() -> learnFragment.getNext("medium")}'
+            app:icon="@drawable/medium_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/yes_button"
+            app:layout_constraintEnd_toStartOf="@id/no_button"
+            style="@style/Widget.Flashcards.Button.Learn"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/no_button"
+            android:layout_width="0dp"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="@color/no_color"
+            android:contentDescription="@string/no_description"
+            android:onClick='@{() -> learnFragment.getNext("no")}'
+            app:icon="@drawable/no_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/medium_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            style="@style/Widget.Flashcards.Button.Learn"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
