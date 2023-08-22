@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/setsFragment">
+
+    <fragment
+        android:id="@+id/setsFragment"
+        android:name="com.example.flashcards.fragments.SetsFragment"
+        android:label="fragment_sets"
+        tools:layout="@layout/fragment_sets">
+
+        <action
+            android:id="@+id/action_setsFragment_to_flashcardsFragment"
+            app:destination="@id/flashcardsFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/pop_slide_in"
+            app:popExitAnim="@anim/pop_slide_out" />
+        <action
+            android:id="@+id/action_setsFragment_to_trackProgressFragment"
+            app:destination="@id/trackProgressFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/pop_slide_in"
+            app:popExitAnim="@anim/pop_slide_out" />
+        <action
+            android:id="@+id/action_setsFragment_to_addSetFragment"
+            app:destination="@id/addSetFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/pop_slide_in"
+            app:popExitAnim="@anim/pop_slide_out" />
+        <action
+            android:id="@+id/action_setsFragment_to_chooseLearnOptionFragment"
+            app:destination="@id/chooseLearnOptionFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/pop_slide_in"
+            app:popExitAnim="@anim/pop_slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/flashcardsFragment"
+        android:name="com.example.flashcards.fragments.FlashcardsFragment"
+        android:label="fragment_flashcards"
+        tools:layout="@layout/fragment_flashcards" >
+        <action
+            android:id="@+id/action_flashcardsFragment_to_addFlashcardFragment"
+            app:destination="@id/addFlashcardFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/pop_slide_in"
+            app:popExitAnim="@anim/pop_slide_out" />
+        <action
+            android:id="@+id/action_flashcardsFragment_to_chooseLearnOptionFragment"
+            app:destination="@id/chooseLearnOptionFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/pop_slide_in"
+            app:popExitAnim="@anim/pop_slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/addFlashcardFragment"
+        android:name="com.example.flashcards.fragments.AddFlashcardFragment"
+        android:label="fragment_add_flashcard"
+        tools:layout="@layout/fragment_add_flashcard" >
+        <argument
+            android:name="add_edit"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/learnFragment"
+        android:name="com.example.flashcards.fragments.LearnFragment"
+        android:label="fragment_learn"
+        tools:layout="@layout/fragment_learn" />
+    <fragment
+        android:id="@+id/trackProgressFragment"
+        android:name="com.example.flashcards.fragments.TrackProgressFragment"
+        android:label="fragment_track_progress"
+        tools:layout="@layout/fragment_track_progress" />
+    <fragment
+        android:id="@+id/addSetFragment"
+        android:name="com.example.flashcards.fragments.AddSetFragment"
+        android:label="fragment_add_set"
+        tools:layout="@layout/fragment_add_set" >
+        <argument
+            android:name="edit_set"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseLearnOptionFragment"
+        android:name="com.example.flashcards.fragments.ChooseLearnOptionFragment"
+        android:label="fragment_choose_learn_option"
+        tools:layout="@layout/fragment_choose_learn_option" >
+        <action
+            android:id="@+id/action_chooseLearnOptionFragment_to_learnFragment"
+            app:destination="@id/learnFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/pop_slide_in"
+            app:popExitAnim="@anim/pop_slide_out" />
+    </fragment>
+</navigation>

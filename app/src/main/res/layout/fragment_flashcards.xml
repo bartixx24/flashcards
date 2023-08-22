@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.FlashcardsFragment">
+
+    <View
+        android:id="@+id/sort_view_background"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/sort_view_height"
+        android:background="?attr/sortBackgroundColor"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <View
+        android:id="@+id/sort_divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="?attr/dividerColor"
+        app:layout_constraintTop_toBottomOf="@id/sort_view_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <RelativeLayout
+        android:layout_width="@dimen/sort_spinner_width"
+        android:layout_height="wrap_content"
+        android:background="@drawable/spinner_bg"
+        app:layout_constraintTop_toTopOf="@id/sort_view_background"
+        app:layout_constraintBottom_toBottomOf="@id/sort_view_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Spinner
+            android:id="@+id/spinner_order_option"
+            android:layout_width="@dimen/sort_spinner_width"
+            android:layout_height="wrap_content"
+            android:dropDownWidth="@dimen/sort_spinner_width"
+            android:spinnerMode="dropdown"
+            android:overlapAnchor="false"
+            android:popupBackground="@drawable/spinner_bg"
+            tools:listitem="@layout/sort_options_item" />
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sort_divider"
+        app:layout_constraintBottom_toTopOf="@id/buttons_background"
+        tools:listitem="@layout/flashcard_item"/>
+
+    <View
+        android:id="@+id/buttons_background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/recyclerview_button_background_height"
+        android:background="?attr/bottomButtonsBackgroundColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <View
+        android:id="@+id/buttons_background_divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="?attr/dividerColor"
+        app:layout_constraintBottom_toTopOf="@id/buttons_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/bottom_buttons"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="@id/buttons_background"
+        app:layout_constraintBottom_toBottomOf="@id/buttons_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/add_flashcard_button"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/recyclerview_button_height"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="@dimen/recyclerview_button_text_size"
+            android:text="@string/add_flashcard"
+            app:icon="@drawable/add_icon"
+            android:contentDescription="@string/add_new_flashcard"/>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/learn_button"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/recyclerview_button_height"
+            android:layout_marginStart="16dp"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="@dimen/recyclerview_button_text_size"
+            android:text="@string/learn_button_text"
+            app:icon="@drawable/learn_icon"
+            android:contentDescription="@string/learn_button_text"/>
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
