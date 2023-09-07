@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="sort_view_height">64dp</dimen>
+
+    <dimen name="sort_spinner_width">284dp</dimen>
+    <dimen name="learn_spinner_width">274dp</dimen>
+
+    <dimen name="recyclerview_button_height">44dp</dimen>
+    <dimen name="recyclerview_button_background_height">60dp</dimen>
+    <dimen name="recyclerview_button_text_size">12sp</dimen>
+    <dimen name="round_corners_radius">16dp</dimen>
+    <dimen name="items_padding">12dp</dimen>
+    <dimen name="learn_button_height">84dp</dimen>
+    <dimen name="max_width">800dp</dimen>
+
+    <dimen name="delay">25</dimen>
+
+</resources>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.ChooseLearnOptionFragment">
+    
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintWidth_max="@dimen/max_width">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/learning_strategy_string"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:textAlignment="center"
+                android:text="@string/choose_learning_strategy"
+                android:textSize="22sp"
+                style="@style/TextAppearance.MaterialComponents.Headline5"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginHorizontal="8dp"
+                android:layout_gravity="center_horizontal">
+
+                <Spinner
+                    android:id="@+id/learn_spinner_option"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:dropDownWidth="match_parent"
+                    android:background="@drawable/spinner_bg"
+                    android:overlapAnchor="false"
+                    android:popupBackground="@drawable/spinner_bg"
+                    tools:listitem="@layout/learn_option_item"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="12dp"
+                    android:layout_gravity="center_vertical|end"
+                    android:src="@drawable/arrow_icon"/>
+
+            </FrameLayout>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/show_learned_switch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/show_learned"
+                android:checked="false"
+                style="@style/TextAppearance.MaterialComponents.Body1"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/cancel_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/cancel"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/learn_button"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/learn_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:text="@string/learn_button_text"
+                    app:layout_constraintTop_toTopOf="@id/learn_button"
+                    app:layout_constraintBottom_toBottomOf="@id/learn_button"
+                    app:layout_constraintStart_toEndOf="@id/cancel_button"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

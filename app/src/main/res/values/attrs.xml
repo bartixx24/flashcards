@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="sortBackgroundColor" format="reference"/>
+    <attr name="bottomButtonsBackgroundColor" format="reference"/>
+    <attr name="sortSpinnerColor" format="reference"/>
+    <attr name="learnSpinnerBackground" format="reference"/>
+    <attr name="verticalDividerColor" format="reference" />
+    <attr name="iconsColor" format="reference"/>
+
+</resources>

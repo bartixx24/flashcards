@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE resources [
+    <!ENTITY appname "Aquizo">
+]>
+
+<resources>
+
+    <!-- App -->
+    <string name="app_name">&appname;</string>
+    <string name="unexpected_error">Ha ocurrido un error insesperado…</string>
+    <string name="empty_field">Este campo no puede estar vacío…</string>
+    <string name="back">Volver</string>
+    <string name="cancel">Cancelar</string>
+    <string name="exit">Salida</string>
+
+    <!-- App options menu -->
+    <string name="options">Opciones</string>
+    <string name="track_progress">Sigue tu progreso</string>
+    <string name="rate_us">Valóranos</string>
+    <string name="contact">Contacto</string>
+    <string name="email">aquilaflashcards@gmail.com</string>
+    <string name="about_us">Sobre nosotros</string>
+    <string name="app_description">¡Gracias a la aplicación &appname;, aprender de memoria ya no será un problema para nadie! ¡Memoriza términos complicados con facilidad y diviértete gratis ahora!</string>
+
+    <!-- SetsFragment -->
+    <string name="flashcards_word_count">Memorizadas: %1$d/%2$d</string>
+    <string name="add_new_set">Crear nuevo conjunto</string>
+    <string name="add_set">Crear un conjunto</string>
+    <string name="three_dots">&#8942;</string>
+    <string name="flashcards_button_text">Tarjetas</string>
+    <string name="learn_button_text">Aprender</string>
+    <string name="set_deleted_toast">¡El conjunto ha sido eliminada!</string>
+    <string-array name="sort_options">
+        <item>Orden original</item>
+        <item>Orden original invertido</item>
+        <item>Ascendente alfabéticamente</item>
+        <item>Descendente alfabéticamente</item>
+    </string-array>
+    <!-- Learn Dialog -->
+    <string name="choose_learning_strategy">Por favor, elija la estrategia de aprendizaje</string>
+    <string name="flashcards_order">El orden de las tarjetas</string>
+    <string name="show_learned">Mostrar tarjetas aprendidas</string>
+    <string name="ok">Okej</string>
+    <string-array name="learn_options">
+        <item>Orden original</item>
+        <item>Orden original invertido</item>
+        <item>Orden aleatorio</item>
+        <item>Ascendente alfabéticamente</item>
+        <item>Descendente alfabéticamente</item>
+    </string-array>
+    <!-- Delete Dialog -->
+    <string name="delete_set_title">Eliminar el conjunto</string>
+    <string name="delete_set_message">¿Seguro que quieres eliminar este conjunto?</string>
+    <string name="delete_flashcard_title">Eliminar una tarjeta</string>
+    <string name="delete_flashcard_message">¿Seguro que quieres eliminar esta tarjeta?</string>
+
+    <!-- TrackProgressFragment -->
+    <string name="learned_flashcards_title">Tarjetas memorizadas</string>
+    <string name="all_flashcards_title">Todas las tarjetas</string>
+    <string name="to_learn_flashcards_title">Tarjetas para memorizar</string>
+    <string name="unlearned_sets_title">Conjuntos para memorizar</string>
+    <string name="learned_sets_title">Conjuntos memorizados</string>
+    <string name="no_statistic_data">---</string>
+    <string name="browse_sets">Volver a los conjuntos</string>
+
+    <!-- FlashcardsFragment -->
+    <string name="add_flashcard">Añadir tarjetas</string>
+    <string name="add_new_flashcard">Añadir nuevos tarjetas</string>
+    <string name="flashcard_deleted_toast">¡La tarjeta ha sido eliminada!</string>
+
+    <!-- AddFlashcardFragment -->
+    <string name="term">Término</string>
+    <string name="definition">Definicion</string>
+    <string name="learned">Memorizado</string>
+    <string name="add">Añadir</string>
+    <string name="flashcard_added_toast">¡Se ha añadido una tarjeta!</string>
+    <string name="flashcard_modified_toast">¡La tarjeta ha sido modificada!</string>
+
+    <!-- AddSetFragment -->
+    <string name="set_name">Nombre del conjunto</string>
+    <string name="set_description">Descripción del conjunto (opcional)</string>
+    <string name="modify">Modificar</string>
+    <string name="create">Crear</string>
+    <string name="set_created_toast">¡Se ha creado un conjunto!</string>
+    <string name="set_modified_toast">¡El conjunto ha sido modificado!</string>
+
+    <!-- Item Menu -->
+    <string name="edit_string">Editar</string>
+    <string name="delete_string">Eliminar</string>
+
+    <!-- Learn Fragment -->
+    <string name="show_definition">Mostrar la definición</string>
+    <string name="no_flashcards">¡No hay tarjetas para mostrar!</string>
+    <string name="yes_description">Fácil</string>
+    <string name="medium_description">Así así</string>
+    <string name="no_description">Difícil</string>
+    <string name="displaying_all">Todas las tarjetas</string>
+    <string name="displaying_unlearned">Tarjetas no memorizadas</string>
+    <string name="to_memorize">Para memorizar: %1$d</string>
+
+</resources>
